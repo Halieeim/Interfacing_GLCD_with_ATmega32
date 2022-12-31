@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 4 resources" deleteContents="false" description="Delete 4 resources" element1="/GLCD_Interfacing/img1.c" element2="/GLCD_Interfacing/img1.h" element3="/GLCD_Interfacing/img2.c" element4="/GLCD_Interfacing/img2.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="4" stamp="1672506127668"/>
+</session>

@@ -1,10 +1,19 @@
-13:52:39 **** Incremental Build of configuration Debug for project GLCD_Interfacing ****
+19:09:59 **** Incremental Build of configuration Debug for project GLCD_Interfacing ****
 make all 
+Building file: ../glcd.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"glcd.d" -MT"glcd.o" -c -o "glcd.o" "../glcd.c"
+In file included from ../glcd.c:14:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../glcd.c
+ 
 Building file: ../main.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
 In file included from ../main.c:12:
 c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c: In function 'main':
+../main.c:87: warning: implicit declaration of function 'GLCD_displayImage'
 Finished building: ../main.c
  
 Building target: GLCD_Interfacing.elf
@@ -22,15 +31,15 @@ AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:    8720 bytes (26.6% Full)
+Program:    7764 bytes (23.7% Full)
 (.text + .data + .bootloader)
 
-Data:          8 bytes (0.4% Full)
+Data:       1035 bytes (50.5% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-13:52:40 Build Finished. 0 errors, 1 warnings. (took 854ms)
+19:10:00 Build Finished. 0 errors, 3 warnings. (took 962ms)
 

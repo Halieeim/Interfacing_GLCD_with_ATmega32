@@ -1,0 +1,13 @@
+/*
+ * img2.h
+ *
+ *  Created on: Dec 31, 2022
+ *      Author: ahmed
+ */
+
+#ifndef IMG2_H_
+#define IMG2_H_
+
+const unsigned char dog[];
+
+#endif /* IMG2_H_ */

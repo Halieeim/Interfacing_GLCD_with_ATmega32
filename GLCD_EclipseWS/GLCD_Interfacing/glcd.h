@@ -17,16 +17,6 @@
 #include "std_types.h"
 #include "common_macros.h"
 
-
-/* LCD Data bits mode configuration, its value should be 4 or 8*/
-#define GLCD_DATA_BITS_MODE 8
-
-#if((GLCD_DATA_BITS_MODE != 4) && (GLCD_DATA_BITS_MODE != 8))
-
-#error "Number of Data bits should be equal to 4 or 8"
-
-#endif
-
 /* GLCD total number of pages */
 #define NO_PAGES							8
 
@@ -50,20 +40,18 @@
 #define GLCD_DISPLAY_OFF					0x3E
 #define GLCD_SET_Y_ADDRESS					0x40
 #define GLCD_SET_X_ADDRESS					0xB8
-#define GLCD_SET_Z_ADDRESS					0x03
-#define GLCD_WRITE_DISPLAY_DATA				0x01
-#define GLCD_READ_DISPLAY_DATA				0x02
+#define GLCD_SET_Z_ADDRESS					0xC0
 
 
 void GLCD_init();
-void GLCD_sendCommand(uint16 command, uint8 data);
+void GLCD_sendCommand(uint8 command);
 void GLCD_selectPage(uint8 page);
 void GLCD_moveCursor(uint8 row, uint8 col, uint8 page);
 void GLCD_displayCharacter(uint8 dara);
-void GLCD_displayString(const char *str);
-void GLCD_displayStringPageColumn(const char *str, uint8 row, uint8 column, uint8 page);
-void GLCD_diplayImage(long img[]);
-void GLCD_diplayGIF(long **images);
+/*void GLCD_displayString(const unsigned char *str);
+void GLCD_displayStringPageColumn(const unsigned char *str, uint8 row, uint8 column, uint8 page);*/
+void GLCD_diplayImage(const unsigned char *img);
+void GLCD_diplayGIF(const unsigned char **images, uint8 No_Images);
 void GLCD_clearScreen();
 
 

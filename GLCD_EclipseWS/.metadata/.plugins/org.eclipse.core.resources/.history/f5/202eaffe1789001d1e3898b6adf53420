@@ -1,0 +1,37 @@
+ /******************************************************************************
+ *
+ * File Name: main.c
+ *
+ * Description: Source file for interfacing GLCD with AVR
+ *
+ * Author: Ahmed Abd El-Halim Ahmed
+ *
+ *******************************************************************************/
+
+#include "glcd.h"
+#include "util/delay.h"
+
+int main(void)
+{
+	// initialize GLCD
+	GLCD_init();
+	GLCD_displayString("ahmed mohamed ahmed islamm");
+	GLCD_displayString("ahmed mohamed ahmed islamm");
+	GLCD_displayString("ahmed mohamed ahmed islamm");
+	GLCD_displayString("ahmed mohamed ahmed islamm");
+	GLCD_displayString("ahmed mohamed ahmed islamm");
+	GLCD_displayString("ahmed mohamed ahmed islamm");
+
+	GLCD_displayString("ahmed mohamed ahmed islamm");
+	GLCD_displayString("ahmed mohamed ahmed islamm");
+	/*GLCD_displayString("ahmed mohamed ahmed islamm");
+	GLCD_displayString("ahmed mohamed ahmed islamm");*/
+
+
+
+	for(;;)
+	{
+		// write your code here
+	}
+}
+
