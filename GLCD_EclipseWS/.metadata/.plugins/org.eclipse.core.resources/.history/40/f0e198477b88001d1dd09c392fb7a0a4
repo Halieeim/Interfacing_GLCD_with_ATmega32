@@ -1,0 +1,95 @@
+ /******************************************************************************
+ *
+ * Module: GPIO
+ *
+ * File Name: glcd.c
+ *
+ * Description: Source file for the GLCD driver
+ *
+ * Author: Ahmed Abd El-Halim Ahmed
+ *
+ *******************************************************************************/
+
+#include "glcd.h"
+
+
+void GLCD_init(){
+	/* setting up the direction of data port to be output port */
+	GPIO_setupPortDirection(GLCD_DATA_PORT, PIN_OUTPUT);
+	/* turn it of at the beginning */
+	GPIO_writePort(GLCD_DATA_PORT, LOGIC_LOW);
+
+	/* setting up the direction of control port to be output port */
+	GPIO_setupPortDirection(GLCD_CONTROL_PORT, PIN_OUTPUT);
+
+	/*
+	 * write 1 on E pin
+	 * write 0 on RST pin
+	 * write 0 on DI pin
+	 * write 1 on CS1 pin
+	 * write 1 on CS2 pin
+	 * write 0 on R/W pin
+	 */
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_E_PIN, LOGIC_HIGH);
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_RST_PIN, LOGIC_HIGH);
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_DI_PIN, LOGIC_LOW);
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_CS1_PIN, LOGIC_LOW);
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_CS2_PIN, LOGIC_LOW);
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_R_W_PIN, LOGIC_LOW);
+	_delay_us(10);
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_RST_PIN, LOGIC_LOW);
+
+
+}
+
+void GLCD_selectPage(uint8 page){
+	/* if right page is selected, then setting cs2 = 1, cs1 = 0 */
+	/* if left page is selected, then setting cs2 = 0. cs1 = 1 */
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_CS2_PIN, GET_BIT(page,2));
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_CS2_PIN, GET_BIT(page,1));
+}
+
+void GLCD_sendCommand(uint16 command, uint8 data){
+	/* RS = 0, R/W = 0 */
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_RS_PIN, LOGIC_LOW);
+	GPIO_writePin(GLCD_CONTROL_PORT, GLCD_R_W_PIN, LOGIC_LOW);
+
+	switch(command){
+	case GLCD_DISPLAY_ON:
+		/* writing on data bus */
+		GPIO_writePort(GLCD_DATA_PORT, command);
+		break;
+
+	case GLCD_DISPLAY_OFF:
+		/* writing on data bus */
+		GPIO_writePort(GLCD_DATA_PORT, command);
+		break;
+
+	case GLCD_SET_Y_ADDRESS:
+		/* writing y address (0-63) on DB5 - DB0 */
+		data &= ~(0xC0);	/* making sure it less than 64 */
+		GPIO_writePort(GLCD_DATA_PORT, data);
+		break;
+
+	case GLCD_SET_X_ADDRESS:
+		/* writing y address (0-63) on DB5 - DB0 */
+		data &= ~(0xC0);	/* making sure it less than 64 */
+		GPIO_writePort(GLCD_DATA_PORT, data);
+		break;
+
+	}
+}
+
+void GLCD_displayStringPageColumn(){
+
+}
+
+void GLCD_DiplayImage(long img[]){
+
+}
+void GLCD_DiplayGIF(long **images){
+
+}
+void GLCD_ClearScreen(){
+
+}

@@ -1,0 +1,56 @@
+ /******************************************************************************
+ *
+ * Module: GPIO
+ *
+ * File Name: glcd.h
+ *
+ * Description: Header file for the GLCD driver
+ *
+ * Author: Ahmed Abd El-Halim Ahmed
+ *
+ *******************************************************************************/
+
+#ifndef GLCD_H_
+#define GLCD_H_
+
+#include "gpio.h"
+#include "std_types.h"
+#include "common_macros.h"
+
+
+/* GLCD ports and pins configurations */
+#define GLCD_DATA_PORT						PORTD_ID
+#define GLCD_CONTROL_PORT					PORTC_ID
+#define GLCD_RST_PIN						PIN0_ID
+#define GLCD_E_PIN							PIN1_ID
+#define GLCD_R_W_PIN						PIN2_ID
+#define GLCD_RS_PIN							PIN3_ID
+#define GLCD_CS2_PIN						PIN4_ID
+#define GLCD_CS1_PIN						PIN5_ID
+
+/* GLCD pages */
+#define LEFT_HALF_PAGE						0x01	// cs2=0, cs1=1
+#define RIGHT_HALF_PAGE						0x02	// cs2=1, cs1=0
+
+/* GLCD Commands */
+#define GLCD_DISPLAY_ON						0xFC
+#define GLCD_DISPLAY_OFF					0xF8
+#define GLCD_SET_Y_ADDRESS					0x04
+#define GLCD_SET_X_ADDRESS					0xB8
+#define GLCD_SET_Z_ADDRESS					0x03
+#define GLCD_WRITE_DISPLAY_DATA				0x01
+#define GLCD_READ_DISPLAY_DATA				0x02
+
+
+void GLCD_init();
+void GLCD_sendCommand(uint16 command, uint8 data);
+void GLCD_selectPage(uint8 page);
+void GLCD_displayStringPageColumn();
+void GLCD_diplayImage(long img[]);
+void GLCD_diplayGIF(long **images);
+void GLCD_clearScreen();
+
+
+
+
+#endif /* GLCD_H_ */

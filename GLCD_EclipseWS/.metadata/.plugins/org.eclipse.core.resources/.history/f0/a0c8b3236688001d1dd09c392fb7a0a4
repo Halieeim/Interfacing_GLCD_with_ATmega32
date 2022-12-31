@@ -1,0 +1,23 @@
+ /******************************************************************************
+ *
+ * File Name: main.c
+ *
+ * Description: Source file for interfacing GLCD with AVR
+ *
+ * Author: Ahmed Abd El-Halim Ahmed
+ *
+ *******************************************************************************/
+
+#include "glcd.h"
+
+
+int main(void)
+{
+	// initialize your program
+
+	for(;;)
+	{
+		// write your code here
+	}
+}
+
